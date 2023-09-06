@@ -38,11 +38,22 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ri-mail-send-line"></i>
-                        <span>Email</span>
+                        <span>Home Slide Setup</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="email-inbox.html">Inbox</a></li>
-                        <li><a href="email-read.html">Read Email</a></li>
+                        <li><a href="{{ route('home.slide') }}">Home Slide</a></li>
+{{--                        <li><a href="email-read.html">Read Email</a></li>--}}
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-mail-send-line"></i>
+                        <span>About Page Setup</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('about.page') }}">About Page</a></li>
+                        <li><a href="{{ route('about.multi.image') }}">About Multi Image</a></li>
+                        <li><a href="{{ route('all.multi.image') }}">All Multi Image</a></li>
                     </ul>
                 </li>
 

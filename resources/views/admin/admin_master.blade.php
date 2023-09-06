@@ -114,6 +114,20 @@
     }
     @endif
 </script>
+<!--tinymce js-->
+<script src="{{ asset('backend/assets/libs/tinymce/tinymce.min.js') }}"></script>
+
+<!-- init js -->
+<script src="{{ asset('backend/assets/js/pages/form-editor.init.js') }}"></script>
+
+<!-- Required datatable js -->
+<script src="{{ asset('backend/assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('backend/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<!-- Buttons examples -->
+<!-- Datatable init js -->
+<script src="{{ asset('backend/assets/js/pages/datatables.init.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{ asset('backend/assets/js/code.js') }}"></script>
 </body>
 
 </html>
