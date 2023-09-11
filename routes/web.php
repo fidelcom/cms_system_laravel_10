@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Home\AboutController;
+use App\Http\Controllers\Home\BlogCategoryController;
+use App\Http\Controllers\Home\BlogController;
 use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
@@ -24,6 +26,9 @@ Route::get('/', function () {
 
 Route::controller(HomeController::class)->group(function (){
     Route::get('about', 'homeAbout')->name('home.about');
+    Route::get('blog/details/{id}', 'blogDetail')->name('blog.details');
+    Route::get('category/post/{id}', 'categoryPost')->name('category.post');
+    Route::get('/blog', 'homeBlog')->name('home.blog');
 });
 
 Route::get('/dashboard', function () {
@@ -63,6 +68,20 @@ Route::controller(AboutController::class)->prefix('/admin')->group(function (){
     Route::post('update/multi/image/{id}', 'updateMultiImage')->name('update.multi.image');
     Route::get('delete/multi/image/{id}', 'deleteMultiImage')->name('delete.multi.image');
 });
+
+//Blog Category
+Route::controller(BlogCategoryController::class)->prefix('/admin')->group(function (){
+    Route::get('/all/blog/category', 'allBlogCategory')->name('all.blog.category');
+    Route::get('/add/blog/category', 'addBlogCategory')->name('add.blog.category');
+    Route::post('/store/blog/category', 'storeBlogCategory')->name('store.blog.category');
+    Route::get('/edit/blog/category/{id}', 'editBlogCategory')->name('edit.blog.category');
+    Route::post('/update/blog/category/{id}', 'updateBlogCategory')->name('update.blog.category');
+    Route::get('/delete/blog/category/{id}', 'deleteBlogCategory')->name('delete.blog.category');
+});
+
+//Blog All Route
+Route::get('/admin/blog/del/{id}', [BlogController::class, 'del'])->name('blog.del');
+Route::resource('/admin/blog', BlogController::class);
 
 
 

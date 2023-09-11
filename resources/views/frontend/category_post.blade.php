@@ -2,17 +2,16 @@
 
 @section('frontend')
     <main>
-
         <!-- breadcrumb-area -->
         <section class="breadcrumb__wrap">
             <div class="container custom-container">
                 <div class="row justify-content-center">
                     <div class="col-xl-6 col-lg-8 col-md-10">
                         <div class="breadcrumb__wrap__content">
-                            <h2 class="title">Recent Article</h2>
+                            <h2 class="title">{{ $category_name->blog_category }}</h2>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="/">Home</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Blog</li>
                                 </ol>
                             </nav>
@@ -39,82 +38,27 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8">
-                        <div class="standard__blog__post">
-                            <div class="standard__blog__thumb">
-                                <a href="blog-details.html"><img src="assets/img/blog/blog_thumb01.jpg" alt=""></a>
-                                <a href="blog-details.html" class="blog__link"><i class="far fa-long-arrow-right"></i></a>
-                            </div>
-                            <div class="standard__blog__content">
-                                <div class="blog__post__avatar">
-                                    <div class="thumb"><img src="assets/img/blog/blog_avatar.png" alt=""></div>
-                                    <span class="post__by">By : <a href="#">Halina Spond</a></span>
+                        @foreach($posts as $post)
+                            <div class="standard__blog__post">
+                                <div class="standard__blog__thumb">
+                                    <a href="{{ route('blog.details', $post->id) }}"><img src="{{ asset($post->image) }}" alt=""></a>
+                                    <a href="{{ route('blog.details', $post->id) }}" class="blog__link"><i class="far fa-long-arrow-right"></i></a>
                                 </div>
-                                <h2 class="title"><a href="blog-details.html">Best website traffice Booster with great tools.</a></h2>
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable</p>
-                                <ul class="blog__post__meta">
-                                    <li><i class="fal fa-calendar-alt"></i> 25 january 2021</li>
-                                    <li><i class="fal fa-comments-alt"></i> <a href="#">Comment (08)</a></li>
-                                    <li class="post-share"><a href="#"><i class="fal fa-share-all"></i> (18)</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="standard__blog__post">
-                            <div class="standard__blog__thumb">
-                                <a href="blog-details.html"><img src="assets/img/blog/blog_thumb02.jpg" alt=""></a>
-                                <a href="blog-details.html" class="blog__link"><i class="far fa-long-arrow-right"></i></a>
-                            </div>
-                            <div class="standard__blog__content">
-                                <div class="blog__post__avatar">
-                                    <div class="thumb"><img src="assets/img/blog/blog_avatar.png" alt=""></div>
-                                    <span class="post__by">By : <a href="#">Rasalina D.</a></span>
+                                <div class="standard__blog__content">
+                                    <div class="blog__post__avatar">
+                                        <div class="thumb"><img src="{{ asset($post->image) }}" alt=""></div>
+                                        <span class="post__by">By : <a href="#">Halina Spond</a></span>
+                                    </div>
+                                    <h2 class="title"><a href="{{ route('blog.details', $post->id) }}">{{ $post->title }}</a></h2>
+                                    <p>{!! \Illuminate\Support\Str::limit($post->description, 200) !!} </p>
+                                    <ul class="blog__post__meta">
+                                        <li><i class="fal fa-calendar-alt"></i> {{ \Illuminate\Support\Carbon::parse($post->created_at)->diffForHumans() }}</li>
+                                        <li><i class="fal fa-comments-alt"></i> <a href="#">Comment (08)</a></li>
+                                        <li class="post-share"><a href="#"><i class="fal fa-share-all"></i> (18)</a></li>
+                                    </ul>
                                 </div>
-                                <h2 class="title"><a href="blog-details.html">How you should start product design</a></h2>
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable</p>
-                                <ul class="blog__post__meta">
-                                    <li><i class="fal fa-calendar-alt"></i> 28 january 2021</li>
-                                    <li><i class="fal fa-comments-alt"></i> <a href="#">Comment (12)</a></li>
-                                    <li class="post-share"><a href="#"><i class="fal fa-share-all"></i> (18)</a></li>
-                                </ul>
                             </div>
-                        </div>
-                        <div class="standard__blog__post">
-                            <div class="standard__blog__thumb">
-                                <a href="blog-details.html"><img src="assets/img/blog/blog_thumb03.jpg" alt=""></a>
-                                <a href="blog-details.html" class="blog__link"><i class="far fa-long-arrow-right"></i></a>
-                            </div>
-                            <div class="standard__blog__content">
-                                <div class="blog__post__avatar">
-                                    <div class="thumb"><img src="assets/img/blog/blog_avatar.png" alt=""></div>
-                                    <span class="post__by">By : <a href="#">Halina Spond</a></span>
-                                </div>
-                                <h2 class="title"><a href="blog-details.html">How to start sketch after build a website</a></h2>
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable</p>
-                                <ul class="blog__post__meta">
-                                    <li><i class="fal fa-calendar-alt"></i> 28 january 2021</li>
-                                    <li><i class="fal fa-comments-alt"></i> <a href="#">Comment (12)</a></li>
-                                    <li class="post-share"><a href="#"><i class="fal fa-share-all"></i> (18)</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="standard__blog__post">
-                            <div class="standard__blog__thumb">
-                                <a href="blog-details.html"><img src="assets/img/blog/blog_thumb04.jpg" alt=""></a>
-                                <a href="blog-details.html" class="blog__link"><i class="far fa-long-arrow-right"></i></a>
-                            </div>
-                            <div class="standard__blog__content">
-                                <div class="blog__post__avatar">
-                                    <div class="thumb"><img src="assets/img/blog/blog_avatar.png" alt=""></div>
-                                    <span class="post__by">By : <a href="#">Halina Spond</a></span>
-                                </div>
-                                <h2 class="title"><a href="blog-details.html">Best website traffics Booster with great tools.</a></h2>
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable</p>
-                                <ul class="blog__post__meta">
-                                    <li><i class="fal fa-calendar-alt"></i> 28 january 2021</li>
-                                    <li><i class="fal fa-comments-alt"></i> <a href="#">Comment (12)</a></li>
-                                    <li class="post-share"><a href="#"><i class="fal fa-share-all"></i> (18)</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                        @endforeach
                         <div class="pagination-wrap">
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination">
@@ -139,68 +83,25 @@
                             <div class="widget">
                                 <h4 class="widget-title">Recent Blog</h4>
                                 <ul class="rc__post">
-                                    <li class="rc__post__item">
-                                        <div class="rc__post__thumb">
-                                            <a href="blog-details.html"><img src="assets/img/blog/rc_thumb01.jpg" alt=""></a>
-                                        </div>
-                                        <div class="rc__post__content">
-                                            <h5 class="title"><a href="blog-details.html">Best website traffick booster with
-                                                    great tools.</a></h5>
-                                            <span class="post-date"><i class="fal fa-calendar-alt"></i> 28 january 2021</span>
-                                        </div>
-                                    </li>
-                                    <li class="rc__post__item">
-                                        <div class="rc__post__thumb">
-                                            <a href="blog-details.html"><img src="assets/img/blog/rc_thumb02.jpg" alt=""></a>
-                                        </div>
-                                        <div class="rc__post__content">
-                                            <h5 class="title"><a href="blog-details.html">How to become a best sale marketer
-                                                    in a year!</a></h5>
-                                            <span class="post-date"><i class="fal fa-calendar-alt"></i> 28 january 2021</span>
-                                        </div>
-                                    </li>
-                                    <li class="rc__post__item">
-                                        <div class="rc__post__thumb">
-                                            <a href="blog-details.html"><img src="assets/img/blog/rc_thumb03.jpg" alt=""></a>
-                                        </div>
-                                        <div class="rc__post__content">
-                                            <h5 class="title"><a href="blog-details.html">Google take latest step & catch the
-                                                    black SEO</a></h5>
-                                            <span class="post-date"><i class="fal fa-calendar-alt"></i> 28 january 2021</span>
-                                        </div>
-                                    </li>
-                                    <li class="rc__post__item">
-                                        <div class="rc__post__thumb">
-                                            <a href="blog-details.html"><img src="assets/img/blog/rc_thumb04.jpg" alt=""></a>
-                                        </div>
-                                        <div class="rc__post__content">
-                                            <h5 class="title"><a href="blog-details.html">Businesses are thriving societies. Time for urgent change</a></h5>
-                                            <span class="post-date"><i class="fal fa-calendar-alt"></i> 28 january 2021</span>
-                                        </div>
-                                    </li>
-                                    <li class="rc__post__item">
-                                        <div class="rc__post__thumb">
-                                            <a href="blog-details.html"><img src="assets/img/blog/rc_thumb05.jpg" alt=""></a>
-                                        </div>
-                                        <div class="rc__post__content">
-                                            <h5 class="title"><a href="blog-details.html">TikTok influencer marketing:How to
-                                                    work with influencer</a></h5>
-                                            <span class="post-date"><i class="fal fa-calendar-alt"></i> 28 january 2021</span>
-                                        </div>
-                                    </li>
+                                    @foreach($allBlogs as $item)
+                                        <li class="rc__post__item">
+                                            <div class="rc__post__thumb">
+                                                <a href="{{ route('blog.details', $item->id) }}"><img src="{{ asset($item->image) }}" alt=""></a>
+                                            </div>
+                                            <div class="rc__post__content">
+                                                <h5 class="title"><a href="{{ route('blog.details', $item->id) }}">{{ $item->title }}</a></h5>
+                                                <span class="post-date"><i class="fal fa-calendar-alt"></i> {{ \Illuminate\Support\Carbon::parse($item->created_at)->diffForHumans() }}</span>
+                                            </div>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                             <div class="widget">
                                 <h4 class="widget-title">Categories</h4>
                                 <ul class="sidebar__cat">
-                                    <li class="sidebar__cat__item"><a href="blog.html">Web Design (6)</a></li>
-                                    <li class="sidebar__cat__item"><a href="blog.html">Web Development (4)</a></li>
-                                    <li class="sidebar__cat__item"><a href="blog.html">Product Design (9)</a></li>
-                                    <li class="sidebar__cat__item"><a href="blog.html">Animation (6)</a></li>
-                                    <li class="sidebar__cat__item"><a href="blog.html">Ui/Ux Design (8)</a></li>
-                                    <li class="sidebar__cat__item"><a href="blog.html">Branding Design (12)</a></li>
-                                    <li class="sidebar__cat__item"><a href="blog.html">Web Design (6)</a></li>
-                                    <li class="sidebar__cat__item"><a href="blog.html">Logo Design (6)</a></li>
+                                    @foreach($categories as $category)
+                                        <li class="sidebar__cat__item"><a href="{{ route('category.post', $category->id) }}">{{ $category->blog_category }} ({{ $category->blog->count() }})</a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                             <div class="widget">
